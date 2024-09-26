@@ -1,4 +1,4 @@
-package com.i18next;
+package com.i18next4j;
 
 import java.util.HashMap;
 import java.util.Map;

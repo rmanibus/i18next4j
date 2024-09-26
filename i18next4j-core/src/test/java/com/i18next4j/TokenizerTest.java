@@ -1,12 +1,12 @@
-package com.i18next;
+package com.i18next4j;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static com.i18next.Token.Type.PARAMETER;
-import static com.i18next.Token.Type.TEXT;
+import static com.i18next4j.Token.Type.PARAMETER;
+import static com.i18next4j.Token.Type.TEXT;
 
 public class TokenizerTest {
 

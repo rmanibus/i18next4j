@@ -1,4 +1,4 @@
-package com.i18next;
+package com.i18next4j;
 
 public class BackendException extends RuntimeException {
 

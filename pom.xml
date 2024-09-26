@@ -10,6 +10,7 @@
 
     <modules>
         <module>i18next4j-core</module>
+        <module>i18next4j-resources-backend</module>
     </modules>
 
     <licenses>

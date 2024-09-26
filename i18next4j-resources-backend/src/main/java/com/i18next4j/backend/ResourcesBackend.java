@@ -1,7 +1,9 @@
-package com.i18next;
+package com.i18next4j.backend;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.i18next4j.BackendException;
+import com.i18next4j.BackendModule;
 
 import java.io.IOException;
 import java.io.InputStream;
