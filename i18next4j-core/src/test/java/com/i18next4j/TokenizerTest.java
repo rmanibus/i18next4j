@@ -13,7 +13,7 @@ public class TokenizerTest {
     @Test
     public void extractParameterToken() throws BackendException {
         String template = "{{value}}";
-        Tokenizer tokenizer = new Tokenizer(I18NextOptions.InterpolationOptions.defaultInstance());
+        Tokenizer tokenizer = Tokenizer.create();
         Token[] tokens = tokenizer.tokenize(template);
         Assertions.assertEquals(1, tokens.length);
         Assertions.assertEquals("value", tokens[0].value());
@@ -23,7 +23,7 @@ public class TokenizerTest {
     @Test
     public void extractTextToken() throws BackendException {
         String template = "value";
-        Tokenizer tokenizer = new Tokenizer(I18NextOptions.InterpolationOptions.defaultInstance());
+        Tokenizer tokenizer = Tokenizer.create();
         Token[] tokens = tokenizer.tokenize(template);
         Assertions.assertEquals(1, tokens.length);
         Assertions.assertEquals("value", tokens[0].value());
@@ -31,9 +31,9 @@ public class TokenizerTest {
     }
 
     @Test
-    public void extractMultipleTokens() throws BackendException {
+    public void extractMultipleParameterTokens() throws BackendException {
         String template = "{{aa}} replace this {{value}} by this {{other}} whatever";
-        Tokenizer tokenizer = new Tokenizer(I18NextOptions.InterpolationOptions.defaultInstance());
+        Tokenizer tokenizer = Tokenizer.create();
         Token[] tokens = tokenizer.tokenize(template);
         Assertions.assertEquals(6, tokens.length);
     }
@@ -41,7 +41,7 @@ public class TokenizerTest {
     @Test
     public void startTokenWithoutEndToken() throws BackendException {
         String template = "start token {{ without end token";
-        Tokenizer tokenizer = new Tokenizer(I18NextOptions.InterpolationOptions.defaultInstance());
+        Tokenizer tokenizer = Tokenizer.create();
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             tokenizer.tokenize(template);
         });
@@ -50,16 +50,18 @@ public class TokenizerTest {
     @Test
     public void endTokenWithoutStartToken() throws BackendException {
         String template = "end token }} without start token";
-        Tokenizer tokenizer = new Tokenizer(I18NextOptions.InterpolationOptions.defaultInstance());
-        Token[] tokens = tokenizer.tokenize(template);
-        System.out.println(Arrays.toString(tokens));
+        Tokenizer tokenizer = Tokenizer.create();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            tokenizer.tokenize(template);
+        });
     }
 
     @Test
-    public void extractMultipleNestedTokens() throws BackendException {
+    public void extractMixedTokens() throws BackendException {
         String template = "replace this {{value}} by $t(test) this {{other}} whatever";
-        Tokenizer tokenizer = new Tokenizer(I18NextOptions.InterpolationOptions.defaultInstance());
+        Tokenizer tokenizer = Tokenizer.create();
         Token[] tokens = tokenizer.tokenize(template);
-        Assertions.assertEquals(6, tokens.length);
+        System.out.println(Arrays.toString(tokens));
+        Assertions.assertEquals(7, tokens.length);
     }
 }

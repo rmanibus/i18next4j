@@ -13,7 +13,7 @@ public class I18NextEngine implements I18Next {
 
     private I18NextEngine(I18NextOptions i18NextOptions) {
         this.i18NextOptions = i18NextOptions;
-        this.tokenizer = new Tokenizer(i18NextOptions.getInterpolationOptions());
+        this.tokenizer = Tokenizer.create(i18NextOptions.getInterpolationOptions());
     }
 
 
