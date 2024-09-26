@@ -31,7 +31,7 @@ public class I18NextEngine implements I18Next {
     private Map<String, Template> loadNamespaceResources(String language, String namespace) {
         Map<String, Template> templates = new HashMap<>();
         i18NextOptions.getBackend().read(language, namespace).forEach((key, value) -> {
-            templates.put(key, new Template(tokenizer.tokenize(value)));
+            templates.put(key, new Template(tokenizer.tokenize(value), this));
         });
         return templates;
     }

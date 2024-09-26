@@ -48,6 +48,15 @@ public class TokenizerTest {
     }
 
     @Test
+    public void startTokenAtTheEnd() throws BackendException {
+        String template = "start token {{";
+        Tokenizer tokenizer = Tokenizer.create();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            tokenizer.tokenize(template);
+        });
+    }
+
+    @Test
     public void endTokenWithoutStartToken() throws BackendException {
         String template = "end token }} without start token";
         Tokenizer tokenizer = Tokenizer.create();
