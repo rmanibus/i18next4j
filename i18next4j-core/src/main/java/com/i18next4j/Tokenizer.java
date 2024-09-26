@@ -11,11 +11,15 @@ public class Tokenizer {
         this.options = options;
     }
 
+    final static String[] DELIMITERS = new String[]{"{{", "}}", "$t(", ")"};
+
+
     public Token[] tokenize(String template) {
 
         List<Token> fragments = new ArrayList<>();
 
         String tmp = template;
+
         while (true) {
             int start = tmp.indexOf(options.getPrefix());
             if (start == -1) {
@@ -34,7 +38,7 @@ public class Tokenizer {
         if (tmp.contains(options.getPrefix())) {
             throw new IllegalArgumentException("No start token found for end token");
         }
-        if(!tmp.isEmpty()){
+        if (!tmp.isEmpty()) {
             fragments.add(new Token(tmp, Token.Type.TEXT));
         }
         return fragments.toArray(new Token[0]);

@@ -54,4 +54,12 @@ public class TokenizerTest {
         Token[] tokens = tokenizer.tokenize(template);
         System.out.println(Arrays.toString(tokens));
     }
+
+    @Test
+    public void extractMultipleNestedTokens() throws BackendException {
+        String template = "replace this {{value}} by $t(test) this {{other}} whatever";
+        Tokenizer tokenizer = new Tokenizer(I18NextOptions.InterpolationOptions.defaultInstance());
+        Token[] tokens = tokenizer.tokenize(template);
+        Assertions.assertEquals(6, tokens.length);
+    }
 }
