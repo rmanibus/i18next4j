@@ -1,12 +1,13 @@
 package com.i18next4j;
 
+import com.i18next4j.tokenizer.token.Token;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static com.i18next4j.Token.Type.PARAMETER;
-import static com.i18next4j.Token.Type.TEXT;
+import static com.i18next4j.tokenizer.token.Token.Type.PARAMETER;
+import static com.i18next4j.tokenizer.token.Token.Type.TEXT;
 
 public class TemplateTest {
 

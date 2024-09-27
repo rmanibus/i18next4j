@@ -1,6 +1,8 @@
 package com.i18next4j;
 
 
+import com.i18next4j.tokenizer.token.Token;
+
 import java.util.Map;
 
 public class Template {

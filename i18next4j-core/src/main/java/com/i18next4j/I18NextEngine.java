@@ -1,5 +1,7 @@
 package com.i18next4j;
 
+import com.i18next4j.tokenizer.Tokenizer;
+
 import java.util.HashMap;
 import java.util.Map;
 

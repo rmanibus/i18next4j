@@ -89,11 +89,11 @@ public class I18NextOptions {
             DEFAULT_INTERPOLATION_OPTIONS = InterpolationOptions.builder().build();
         }
 
-        static InterpolationOptions defaultInstance() {
+        public static InterpolationOptions defaultInstance() {
             return DEFAULT_INTERPOLATION_OPTIONS;
         }
 
-        static InterpolationOptions.Builder builder() {
+        public static InterpolationOptions.Builder builder() {
             return new Builder();
         }
 

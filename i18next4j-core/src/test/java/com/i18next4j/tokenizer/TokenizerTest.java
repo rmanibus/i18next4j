@@ -1,12 +1,14 @@
-package com.i18next4j;
+package com.i18next4j.tokenizer;
 
+import com.i18next4j.BackendException;
+import com.i18next4j.tokenizer.token.Token;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static com.i18next4j.Token.Type.PARAMETER;
-import static com.i18next4j.Token.Type.TEXT;
+import static com.i18next4j.tokenizer.token.Token.Type.PARAMETER;
+import static com.i18next4j.tokenizer.token.Token.Type.TEXT;
 
 public class TokenizerTest {
 

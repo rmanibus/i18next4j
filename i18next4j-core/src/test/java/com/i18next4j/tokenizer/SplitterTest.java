@@ -1,5 +1,6 @@
-package com.i18next4j;
+package com.i18next4j.tokenizer;
 
+import com.i18next4j.BackendException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

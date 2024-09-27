@@ -1,4 +1,4 @@
-package com.i18next4j;
+package com.i18next4j.tokenizer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

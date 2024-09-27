@@ -1,4 +1,4 @@
-package com.i18next4j;
+package com.i18next4j.tokenizer.token;
 
 public record Token(String value, Type type) {
 

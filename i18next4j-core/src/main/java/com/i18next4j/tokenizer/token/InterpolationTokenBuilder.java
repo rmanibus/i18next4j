@@ -1,15 +1,15 @@
-package com.i18next4j;
+package com.i18next4j.tokenizer.token;
 
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class InterpolationVisitor implements Visitor {
+public class InterpolationTokenBuilder implements TokenBuilder {
 
     final String prefix;
     final String suffix;
     final Token.Type type;
 
-    public InterpolationVisitor(String prefix, String suffix, Token.Type type) {
+    public InterpolationTokenBuilder(String prefix, String suffix, Token.Type type) {
         this.prefix = prefix;
         this.suffix = suffix;
         this.type = type;
