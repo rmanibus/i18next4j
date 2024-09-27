@@ -1,8 +1,13 @@
 package com.i18next4j;
 
 import com.i18next4j.tokenizer.Tokenizer;
+import net.xyzsd.plurals.PluralCategory;
+import net.xyzsd.plurals.PluralRule;
+import net.xyzsd.plurals.PluralRuleType;
+import net.xyzsd.plurals.PluralRules;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class I18NextEngine implements I18Next {
@@ -12,6 +17,8 @@ public class I18NextEngine implements I18Next {
     private final Map<String, Map<String, Map<String, Template>>> resources = new HashMap<>();
 
     private final Tokenizer tokenizer;
+
+    private final PluralResolver pluralResolver = new PluralResolver();
 
     private I18NextEngine(I18NextOptions i18NextOptions) {
         this.i18NextOptions = i18NextOptions;
@@ -25,7 +32,7 @@ public class I18NextEngine implements I18Next {
         String namespace = getNamespace(key, options);
         return resources.computeIfAbsent(language, l -> new HashMap<>())
                 .computeIfAbsent(namespace, n -> loadNamespaceResources(language, namespace))
-                .get(key)
+                .get(getKey(key, language, options))
                 .render(options);
 
     }
@@ -36,6 +43,13 @@ public class I18NextEngine implements I18Next {
             templates.put(key, new Template(tokenizer.tokenize(value), this));
         });
         return templates;
+    }
+
+    private String getKey(String originalKey, String language, Map<String, String> options) {
+        if (!options.containsKey("count")) {
+            return originalKey;
+        }
+        return pluralResolver.getPluralKey(originalKey, language, Long.parseLong(options.get("count")));
     }
 
     private String getNamespace(String key, Map<String, String> options) {

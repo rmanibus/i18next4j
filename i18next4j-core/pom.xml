@@ -16,6 +16,11 @@
             <version>2.17.2</version>
         </dependency>
         <dependency>
+            <groupId>net.xyzsd.plurals</groupId>
+            <artifactId>cldr-plural-rules</artifactId>
+            <version>41</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
